@@ -1,0 +1,65 @@
+Databáze:
+-	Co to je:
+o	Několik tabulek s údaji a daty, nad kterými já mohu spouštět dotazy
+o	Něco co mi spravuje více tabulek a umožnuje propojení mezi nimi a základní operace – číst, vkládat, měnit a mazat data
+o	Je to dobré proto, že systém se stará o to, aby všechny tyto operace byly co možná nejrychlejší a aby mezi daty byl nějaký řád
+o	SŘBD – systém řízení báze dat = systém, který se stará o integritu dat (data jsou v pořádku a splnují pravidla, které se nastavují)
+o	Můžu si jí představit jako excel s více záložkami vespod
+-	K čemu je:
+o	Umožnují rychlou a efektivní správu dat
+o	A v tabulkové podobě tzn data jsou strukturované (tzn. každý sloupec má svůj datový typ)
+o	Každý záznam má daný počet sloupečků a identifikátor
+o	Je dobrá proto, že uchovává data (persistentně – o data nepřijdu)
+-	Druhy databázi:
+o	Strukturované – relační (nejčastější tabulky)
+o	Nestrukturované - nosql, dimenzionální (nonsequencce a sequence validtime)
+	Databáze souborů a soubory mohou obsahovat různá data (pdf, csv, videa)
+	Nemá to pevně danou strukturu
+-	Relační
+o	My jen relační tj strukturované databáze pro jednoduchost
+	Strukturovaná databáze (tabulka) musí mít danou strukturu
+	Existuje pravidlo – informace, které patří k sobě do jedné tabulky a informace, které nesouvisí do jiné tabulky
+•	Příklad: Jména a příjmení zaměstnanců  (osobní údaje) v jedné tabulce; pozice, které dělají na daném oddělení v tabulce jiné; platy podle platové třídy mohou být v jiné tabulce a nebo u zaměstnanců (záleží na granularitě = jemnosti rozdělení údajů, velká jemnost je na škodu stejně tak i jako kdyby vše bylo na jedné hromadě)
+	Tj. většinou první sloupec je identifikátor (ten slouží k tomu, abychom dané záznamy tj řádky byli schopni identifikovat/ jednoznačně určit - kdo jsou a co obsahují)
+•	Identifikátor značen jako id – první – unikátní, jednoznačný a proč? (motivace – Jana Koukalová, Kynšperk; Jana Koukalová, Prahy; existuje na světě vícero žen s touto kombinací a proto by mohlo dojít ke kolizi
+o	Kdybych se vdala, tak systému nemůžu říct u jaké Jany změním příjmení )
+	Každý sloupec musí mít svoje jméno (unikátní) a co je v něm uloženo ve smyslu, zda je tam číslo/text/Boolean hodnota – to označujeme DATOVÝ TYP
+•	Text – NVARCHAR – text s proměnlivou délkou do maximálního počtu několika znaků
+•	Čísla – celá (INTEGER), desetinná (NUMERIC)
+•	Logická hodnota - BOOLEAN – TRUE,FALSE
+•	Datum – DATETIME
+o	Relační z důvodu relace = vztahy/vazba mezi jednotlivými tabulkami
+	Každá tabulka obsahuje skupinu údajů, které spolu souvisí nějak – nechci duplikaci záznamů (aby se mi neopakovali)
+•	Zaměstnanec: jméno, příjmení, věk, kdy nastoupili do zaměstnání, kdo je najal (šéf), atd.
+•	Tabulka s pozicemi –odvětví, oddělení, tým, šéf, pozice, atd.
+•	Zákazníci – osobní údaje – adresa, telefon, mail, apod.
+•	Objednávky/Zboží – co to je, kolik to stojí,  jak je to těžké, jakou to má barvu, materiál, apod.
+	Abychom mohli jednotlivé tabulky provázat, tak je musíme podle něco spojit (svázat)  - Př. zaměstnanec Pepa se stará o zákazníky 1,2,3,4, Lojza – 3,4,6 (1:N) – jeden zákazník má více zaměstnanců
+•	Klíčů – id:
+o	Primární
+o	Cizí
+•	Index – řadit od A do Z – výhoda, rychlejší řazení při dotazu
+o	To, co jsme si ted řekli – vidíte, že je třeba o tom přemýšlet ještě předtím, než databázi vytvoříte a než jí začnete plnit daty a to tak, aby to sloužilo danému účelu
+	1. proč jí chci (seznam objednávek, informace o zákaznících, písně)
+	2. co tam chci (datumy, adresy, čísla)
+	3. jak je rozdělím do jednotlivých tabulek (jaké informace patří k sobě a co je relevantní)
+	4. Jak je navážu (JOINY – na příkladu)
+-	Základní DDL příkazy (https://www.sqlitetutorial.net/)
+o	Create
+o	Insert
+o	Delete
+o	Update
+o	SELECT
+	Distinct
+	Where
+	Order by
+	Group by
+o	JOINY – Left, Right, Inner
+-	Pokročilejší:
+o	UNION
+o	Logické spojky OR vs AND pozor!
+o	Agregační funkce
+-	Zmínění praktické stránky: nenatahovat data do pythonu, ale předzpracovat je v databázovém systému (Teradata, Oracle, Mongo DB, MySQL, MSSQL, apod.)
+o	Proč? Velikost, schéma, rychlost, apod.
+o	Napovídač kodu (různé pluginy)
+o	JetBrains - DataGrip
