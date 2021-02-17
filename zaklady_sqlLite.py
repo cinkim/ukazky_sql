@@ -2,6 +2,7 @@
 ### Ukoly a poznamky k prednasce o SQL - PyLadies Plzen 16.2.2021 online (video dovysvetleni)
 ### author: Jana Koukalova 
 ### description: zaklady o SQL jazyku na demu https://www.sqlitetutorial.net
+### source: https://github.com/koukalka/ukazky_sql/blob/main/zaklady_sqlLite.py
 
 
 # SQL extensions: https://marketplace.visualstudio.com/items?itemName=leo-buneev.vscode-sql-template-literal-js-ts-vue
